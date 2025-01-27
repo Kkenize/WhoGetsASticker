@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var posters = ["Kevin L.","John G."]
+    private var posters = ["Kevin L.","John G."]
     @State private var messageString2 = ""
     @State private var messageString3 = ""
     @State private var randomName = -1
+    private let appColor: Color = .primaryApp
     
     var body: some View {
         let imageName = "sticker"
@@ -22,13 +23,12 @@ struct ContentView: View {
             Text(messageString)
                 .bold()
                 .font(.largeTitle)
-                .foregroundStyle(.tint)
+                .foregroundStyle(appColor)
             
             Image(imageName)
                 .resizable()
                 .scaledToFit()
                 .clipShape(RoundedRectangle(cornerRadius: 50))
-                .animation(.default, value: imageName)
             
             Text("The following students posted to #BuildWithProfG")
                 .font(.largeTitle)
@@ -44,7 +44,8 @@ struct ContentView: View {
             Text(messageString3)
                 .font(.largeTitle)
                 .fontWeight(.black)
-                .foregroundStyle(.tint)
+                .foregroundStyle(appColor)
+                .animation(.default, value: messageString3)
             
             Spacer()
             
@@ -58,7 +59,7 @@ struct ContentView: View {
             .buttonStyle(.borderedProminent)
             .bold()
             .font(.title2)
-            .tint(.blue)
+            .tint(appColor)
         }
         .padding()
     }
